@@ -1,0 +1,16 @@
+{
+  "name": "prose",
+  "version": "0.0.1",
+  "ignore": [
+    "**/.*",
+    "src",
+    "bower_components"
+  ],
+  "dependencies": {
+    "requirejs": "latest",
+    "react": "latest",
+    "rsvp": "latest",
+    "moment": "latest",
+    "underscore": "latest"
+  }
+}

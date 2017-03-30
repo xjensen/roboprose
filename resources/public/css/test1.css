@@ -1,0 +1,474 @@
+
+
+body {
+	background-color: #8D9698; /* #000033 */
+	font-family: 'Alegreya', serif;
+	color: #3B3B3B;
+	font-size: 1.2em;
+}
+a:hover {
+    text-decoration: underline;
+		cursor:pointer;
+}
+.page {
+	background-color: #EBEBEB;
+	width: 38.4em; /* 28em = average 66 characters per line with Linux Libertine */
+	/* height: 48em; -- ideal size -- */
+	font-size: 1em;
+	text-align: justify;
+	margin: .5em auto;
+	-webkit-hyphens: auto;
+	-moz-hyphens: auto;
+	-ms-hyphens: auto;
+	hyphens: auto;
+}
+.page_content {
+}
+.full .page_content {
+	height:100%;
+	min-height: 47.2em;
+}
+.short {
+	padding: 0;
+	position: relative;
+}
+
+.short:before {
+	border-color: #FFFFFF #8D9698;
+	border-style: solid;
+	border-width: 0 2.9em 2.9em 0;
+	content: "";
+	right: 0;
+	top: 0;
+  position: absolute;
+}
+.short:hover:before{
+  border-width: 0;
+}
+.short:before{
+  transition: border 0.2s;
+}
+
+
+.short ul {
+	list-style-type: none;
+	text-align: center;
+	letter-spacing: .05em;
+	font-family: 'Alegreya SC', serif;
+	font-size: .8em;
+	padding: 0;
+	margin: 0;
+    padding: 1.625em;
+    line-height: 1.625em;
+}
+.short li {
+	display: inline;
+}
+.short li + li:before {
+    content: "◦";
+	margin: 0 1.625em;
+}
+
+.stub h4 {
+	margin: 0;
+	line-height: 0.867em;
+	font-size: 1.5em;
+	text-align: center;
+	padding: 1.3em 5.2em 0 5.2em;
+}
+
+
+.gap h4 {
+	margin: 0;
+	line-height: 0.867em;
+	font-size: 1.5em;
+	text-align: center;
+	padding: 0 5.2em;
+}
+
+.gap p {
+    text-align:center;
+    font-style: italic;
+    padding: 1.3em;
+    line-height: 1.3em;
+		text-indent:0;
+}
+
+.empty_page_header {
+	height: 5.2em;
+}
+
+.page_header {
+
+}
+.page_footer {
+
+}
+.open_nav {
+	background-color: #FFFFFF;
+	margin-bottom: 1.3em;
+}
+div.user_nav {
+
+}
+div.user_nav p {
+	text-align: center;
+	margin: .8em;
+	text-indent: 0;
+}
+div.registration form {
+  margin: 0 auto 1.2em auto;
+  width: 28em;
+}
+div.registration form input {
+	display: block;
+	text-align: center;
+	letter-spacing: .05em;
+	font-family: 'Alegreya SC', serif;
+	font-size: 1em;
+	height: 1.6em;
+	padding: 0 1.6em;
+	margin: 0 auto .8em auto;
+}
+.highlight {
+	animation-name: throb;
+	animation-duration: 1s;
+	animation-timing-function: ease-out;
+	animation-iteration-count: infinite;
+	animation-direction: alternate;
+}
+
+div.user_nav ul.nav {
+  border-top: solid #3B3B3B .1em;
+  border-bottom: solid #3B3B3B .1em;
+}
+
+div.page_nav {
+	line-height: 5.525;
+}
+
+div.user_nav {
+	line-height: 2.6;
+  padding: .4em;
+  margin: .4em 0;
+}
+
+div.user_nav ul.nav {
+    margin-bottom: 2em;
+}
+div.user_nav ul.nav li {
+	cursor: pointer;
+}
+
+ul.nav {
+	list-style-type: none;
+	text-align: center;
+	letter-spacing: .05em;
+	font-family: 'Alegreya SC', serif;
+	font-size: .8em;
+	padding: 0;
+	margin: 0 5.2em;
+}
+ul.nav li {
+	display: inline;
+}
+ul.nav li + li:before{
+	content: " | ";
+	padding: 0 .8em;
+}
+
+div.apu_last {
+	margin: 1.3em 0;
+	padding: 0 5.2em;
+	line-height: 2.6em;
+}
+
+div.apu_last ul.apu_last_menu {
+	padding: 1.3em 1.5em;
+	border-top: solid #3B3B3B .1em;
+	border-bottom: solid #3B3B3B .1em;
+	list-style-type: none;
+	letter-spacing: .05em;
+	font-family: 'Alegreya SC', serif;
+}
+div.apu_last ul.apu_last_menu li {
+	cursor: pointer;
+}
+div.apu_last ul.apu_last_menu p {
+	margin: 0;
+	padding: 0;
+	text-indent: 0;
+	display: inline;
+}
+div.apu_last ul.apu_last_menu li + li {
+	margin-top: 1.3em;
+}
+div.apu_last ul.apu_last_menu li.warning {
+	cursor: default;
+	line-height: 1.3em;
+	letter-spacing: 0;
+	font-family: 'Alegreya', serif;
+}
+div.apu_last ul.apu_last_menu li path {
+	fill: #3B3B3B;
+}
+div.apu_last ul.apu_last_menu li svg {
+	float:left;
+	margin-right: 1.3em;
+}
+div.apu_last ul.apu_last_menu li.disabled {
+	cursor: default;
+	color: #d3d3d3;
+}
+div.apu_last ul.apu_last_menu li.disabled p {
+	cursor: default;
+}
+div.apu_last ul.apu_last_menu li.disabled path {
+	fill: #d3d3d3;
+}
+
+div.apu {
+    padding:0;
+    margin:0
+}
+div.apu div.passive p, div.apu div.passive h4 {
+    cursor:pointer;
+}
+div.apu div.active {
+	padding: 1.3em 1.3em;
+	background-color: #FFFFFF;
+	margin: 1.3em 1.3em;
+
+}
+div.apu div.active p {
+    text-indent: 0em;
+    font-style: italic
+}
+div.apu div.active span.dropcap {
+    font-style: normal;
+}
+div.apu div.active h4 {
+    font-style: italic
+}
+div.apu div.active p.apu_author {
+    text-align: right;
+    font-style: normal
+}
+ul.active_controls {
+    list-style-type: none;
+    letter-spacing: .05em;
+	font-family: 'Alegreya SC', serif;
+	font-size: .8em;
+    margin: 0 0 1.625em 0;
+    padding:0;
+    border-bottom: 1px solid #d3d3d3;
+}
+ul.active_controls li {
+  display: inline;
+  line-height: 1.625em;
+}
+span.disabled {
+	color: #d3d3d3;
+}
+ul.active_controls li.last {
+    float:right;
+    margin-right:0
+}
+ul.active_controls li.location {
+    margin-right: 0.8125em;
+    padding-right: 0.8125em;
+    border-right: 1px solid #d3d3d3;
+    font-style: italic;
+    font-weight: bold;
+    font-family: 'Alegreya', serif;
+}
+ul.active_controls li + li.bullet:before {
+    content: "◦";
+	margin: 0 0.8125em;
+    color: #d3d3d3;
+}
+
+div.authorship {
+	padding: 1.3em 3.9em;
+	background-color: #FFFFFF;
+	margin: 1.3em 1.3em;
+}
+div.authorship ul {
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+}
+div.authorship li {
+    display: inline-block;
+}
+div.authorship svg {
+    float: left;
+    margin-right: 0.2em;
+}
+div.authorship path {
+    fill: #3B3B3B;
+}
+li.authorship_cancel {
+    float:right;
+    transition: all .5s ease-in;
+}
+li.authorship_chapter_toggle {
+    margin-left: 1.3em;
+    letter-spacing: .05em;
+	font-family: 'Alegreya SC', serif;
+}
+div.authorship button {
+    letter-spacing: .05em;
+	font-family: 'Alegreya SC', serif;
+	font-size: 1em;
+	margin: 0;
+outline: none;
+  color: #3B3B3B;
+  background: #FFFFFF;
+  cursor: pointer;
+}
+div.authorship textarea {
+	overflow: none;
+	outline: none;
+	padding: 1.3em 0;
+	border:none;
+	background-color: #FFFFFF;
+	font-family: 'Alegreya', serif;
+	color: #3B3B3B;
+	width: 100%;
+	resize:none;
+	font-size: 1em;
+	text-align: justify;
+	-webkit-hyphens: auto;
+	-moz-hyphens: auto;
+	-ms-hyphens: auto;
+	hyphens: auto;
+}
+div.authorship textarea.chapter_entry {
+    font-size: 1.5em;
+    font-weight: bold;
+	line-height:2.167em;
+    height: 2.167em;
+    border-bottom: 1px solid #3B3B3B;
+	text-align: center;
+    padding: 0 0 0.867em 0;
+    margin-bottom: 0.867em;
+}
+div.authorship textarea.paragraph_entry {
+    border-bottom: 1px solid #3B3B3B;
+    text-indent:1.5em;
+	line-height:1.3;
+    height:15.6em;
+    padding: 1.3em 0;
+    margin-bottom: 1.3em;
+}
+
+
+div.page:first-child div.page_header ul {
+	display: none;
+}
+p {
+	margin-bottom: 0;
+	line-height: 1.3;
+	text-indent: 1.5em;
+	margin-top: 0;
+	padding: 0 5.2em;
+}
+.apu_content h4 + p {
+	text-indent: 0;
+}
+.apu_content h4 {
+	margin: 0;
+	line-height: 0.867em;
+	/* line-height: 5.633em; */
+	/* line-height should be the h4 font-size plus whatever leftover multiple is needed to restore the global leading. */
+	font-size: 1.5em;
+	text-align: center;
+	padding: 2.6em 5.2em;
+}
+.apu_content h4 + p:first-line {
+	font-size: 1.1em;
+	line-height: 1.1818;
+	letter-spacing: .05em;
+	font-family: 'Alegreya SC', serif;
+	text-transform: lowercase;
+}
+span.leadin {
+	font-weight:bold;
+}
+li.login {
+	cursor: pointer;
+}
+
+div.page.login p {
+    text-indent: 0;
+	padding: .3em 5.2em;
+}
+
+div.page.login form {
+    padding: 1.3em 5.2em;
+}
+
+div.page.login input.button {
+    font-size: 1em;
+}
+
+div.page.login h4 {
+    margin: 0;
+	line-height: 0.867em;
+	font-size: 1.5em;
+	padding: 1.3em 3.46em;
+}
+
+div.page.login ul.rules {
+    margin-bottom: 0;
+	line-height: 1.3;
+	margin-top: 0;
+	padding: 1.3em 5.2em;
+}
+
+@keyframes throb {
+  from {
+    opacity: 1.0;
+  }
+  to {
+    opacity: 0.5;
+  }
+}
+
+.dropcap {
+	float: left;
+	font-size: 2.9em;
+	font-weight: bold;
+	margin-top: -.19em;
+	margin-bottom: -.3em;
+	margin-right: .10em;
+	text-transform:uppercase;
+  font-family: 'Alegreya SC', serif;
+}
+.a { margin-right: .10em; }
+.b { margin-right: .10em; }
+.c { margin-right: .10em; }
+.d { margin-right: .10em; }
+.e { margin-right: .10em; }
+.f { margin-right: .10em; }
+.g { margin-right: .10em; }
+.h { margin-right: .10em; }
+.i { margin-right: .10em; }
+.j { margin-right: .10em; }
+.k { margin-right: .10em; }
+.l { margin-right: .10em; }
+.m { margin-right: .10em; }
+.n { margin-right: .10em; }
+.o { margin-right: .10em; }
+.p { margin-right: .10em; }
+.q { margin-right: .10em; }
+.r { margin-right: .10em; }
+.s { margin-right: .10em; }
+.t { margin-right: .10em; }
+.u { margin-right: .10em; }
+.v { margin-right: .10em; }
+.w { margin-right: .10em; }
+.x { margin-right: .10em; }
+.y { margin-right: .10em; }
+.z { margin-right: .10em; }
