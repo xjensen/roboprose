@@ -34,5 +34,6 @@ lein repl
 
 ```
 lein run
+```
 
 A phony book can be created for sample use by running `(create-fake-book)` from `src/prose/fixtures/invisibleman.clj`.
