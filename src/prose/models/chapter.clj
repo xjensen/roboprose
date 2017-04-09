@@ -10,7 +10,7 @@
    :limit 1
    :input (fn [params]
             (merge params {:char_count (+ 400 (count (:content params)))}))
-   :output (fn [result input]
+   :output (fn [result input params]
              {:parent_id (:parent_id input)
               :contents [(merge result {:children []})]})})
 

@@ -65,7 +65,7 @@ a:hover {
 	display: inline;
 }
 .short li + li:before {
-    content: "◦";
+    content: "\25E6";
 	margin: 0 1.625em;
 }
 
@@ -472,3 +472,10 @@ div.page.login ul.rules {
 .x { margin-right: .10em; }
 .y { margin-right: .10em; }
 .z { margin-right: .10em; }
+
+.baseline {
+  background-image:
+    linear-gradient(0deg, transparent 5em, rgba(255,0,0,.2) 0, transparent 5.1em),
+    linear-gradient(rgba(0,0,255,.3) 1px, transparent 0);
+  background-size: 100% 1.3em;
+}

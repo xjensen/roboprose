@@ -14,40 +14,40 @@
 
 (defquery forward-discovery
   {:filename "cypher/apu/forward_discovery.cypher"
-   :output (fn [result input]
+   :output (fn [result input params]
              {:parent_id (:parent_id input)
               :contents result})})
 
 (defquery previous-range
   {:filename "cypher/apu/previous_range.cypher"
-   :output (fn [result input]
+   :output (fn [result input params]
              {:parent_id (:parent_id input)
               :child_id (:child_id input)
               :contents result})})
 
 (defquery forward-range
   {:filename "cypher/apu/forward_range.cypher"
-   :output (fn [result input]
+   :output (fn [result input params]
              {:parent_id (:parent_id input)
               :child_id (:child_id input)
               :contents result})})
 
 (defquery previous-chapters
   {:filename "cypher/apu/previous_chapters.cypher"
-   :output (fn [result input]
+   :output (fn [result input params]
              {:location_id (:location_id input)
               :contents (map add-stub-to-labels result)})})
 
 (defquery start-apu
   {:filename "cypher/apu/start_apu.cypher"
-   :output (fn [result input]
+   :output (fn [result input params]
              {:location_id (:location_id input)
               :book (first result)
               :contents (rest result)})})
 
 (defquery start-book
   {:filename "cypher/apu/start_book.cypher"
-   :output (fn [result input]
+   :output (fn [result input params]
              {:book_id (:book_id input)
               :book (first result)
               :contents (rest result)})})

@@ -3,22 +3,20 @@
             [prose.models.apu :as apu]
             [prose.models.book :as book]
             [prose.models.chapter :as chapter]
-            [prose.models.paragraph :as paragraph]))
+            [prose.models.paragraph :as paragraph]
+            [prose.utilities :refer :all]
+            [clojure.data.json :as j]))
 
-(def lorem "Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.")
-
-(defn fake-chapter
-  [size]
-  (repeat size lorem))
+(def data (j/read-str (read-resource "public/data/invisibleman.json")))
 
 (defn create-fake-book
   []
   (let
-    [fake-user (user/token-registration "Fakey McFakerton")
-     fake-book (book/create {:book_title "Fake Book"
+    [fake-user (user/token-registration "H. G. Wells")
+     fake-book (book/create {:book_title (data "title")
                              :user_id (:id fake-user)
-                             :chapter_title "Sup"
-                             :content lorem})
+                             :chapter_title ((first (data "chapters")) "heading")
+                             :content ((first ((first (data "chapters")) "paragraphs")) "content")})
      fake-initial-chapter-id (:id (first (:contents fake-book)))
      fake-initial-chapter-ending-id (reduce
                                      (fn
@@ -29,9 +27,9 @@
                                           (paragraph/create
                                            {:parent_id previous-id
                                             :user_id (:id fake-user)
-                                            :content next-content})))))
+                                            :content (next-content "content")})))))
                                      fake-initial-chapter-id
-                                     (fake-chapter 199))
+                                     (drop 1 ((first (data "chapters")) "paragraphs")))
      fake-following-chapters (reduce
                               (fn
                                 [previous-chapter-ending-id next-chapter]
@@ -43,8 +41,8 @@
                                       (chapter/create
                                        {:parent_id previous-chapter-ending-id
                                         :user_id (:id fake-user)
-                                        :title "Sup"
-                                        :content (first next-chapter)}))))]
+                                        :title (next-chapter "heading")
+                                        :content ((first (next-chapter "paragraphs")) "content")}))))]
                                   (reduce
                                    (fn
                                      [previous-id next-content]
@@ -54,11 +52,11 @@
                                         (paragraph/create
                                          {:parent_id previous-id
                                           :user_id (:id fake-user)
-                                          :content next-content})))))
+                                          :content (next-content "content")})))))
                                    chapter-start-id
-                                   (rest next-chapter))))
+                                   (rest (next-chapter "paragraphs")))))
                               fake-initial-chapter-ending-id
-                              (repeat 5 (fake-chapter 200)))]
+                              (drop 1 (data "chapters")))]
     (:id fake-book)))
 
 #_(create-fake-book)

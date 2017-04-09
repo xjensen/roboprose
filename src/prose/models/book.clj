@@ -10,7 +10,7 @@
    :limit 1
    :input (fn [params]
             (merge params {:char_count (+ 400 (count (:content params)))}))
-   :output (fn [result]
+   :output (fn [result input params]
              {:title (:book_title result)
               :id (:book_id result)
               :contents [(dissoc result :book_id :book_title)]})})

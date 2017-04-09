@@ -5,7 +5,7 @@
             [clojurewerkz.neocons.rest.cypher :as cy]
             [clj-time.core :as t]))
 
-(def db (nr/connect "http://neo4j:pass0202@localhost:7474/db/data/"))
+(def db (nr/connect "http://localhost:7474/db/data/"))
 
 (def alphanumeric "0123456789ABCDEFGHIJKLMNOPQRSTUVWXTZabcdefghiklmnopqrstuvwxyz")
 
@@ -22,7 +22,7 @@
   (loop
     [ids (get-random-id-group amount length)]
     (let
-      [result (cy/tquery (read-resource "cypher/graph/get_ids.cypher") {:ids ids})]
+      [result (cy/tquery db (read-resource "cypher/graph/get_ids.cypher") {:ids ids})]
       (if (empty? result)
         (keywordize-keys (apply merge (map hash-map (map (fn [x] (str "id_" (+ x 1))) (range amount)) ids)))
         (recur (get-random-id-group amount length))))))
@@ -59,7 +59,7 @@
 
 (defn- modify-output-upon-modifier
   [result input params modifier]
-  (if modifier (supply-modifier modifier result input params) result))
+  (if modifier (modifier result input params) result))
 
 (defn- limit-upon-limiter
   [result limiter]
@@ -80,7 +80,7 @@
       (if corrections
         corrections
         (let
-          [result (cy/tquery (read-resource (:filename properties)) input)
+          [result (cy/tquery db (read-resource (:filename properties)) input)
            pruned-result (limit-upon-limiter (keywordize-keys result) (:limit properties))
            output (modify-output-upon-modifier pruned-result input params (:output properties))]
           output)))))
@@ -111,4 +111,3 @@
                                         (:user_id params)])})
 
 #_(find-by-id {:user_id "SU4J3"})
-

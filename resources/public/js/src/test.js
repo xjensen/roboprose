@@ -251,7 +251,7 @@ var Book = React.createClass({
 				} else {
 					var first = (_.contains(apu.labels, "Chapter"));
 					var last_page = _.last(memo);
-					if ((apu.page == true) || (last_page.size == "short")) {
+					if (last_page.size == "short") {
 						memo.push({
 							first: first,
 							size: "full",
@@ -259,7 +259,19 @@ var Book = React.createClass({
 							contents: [ apu ]
 						});
 					} else {
-						last_page.contents.push(apu);
+            var overall_chars = _.reduce(last_page.contents, function(memo, apu) {
+              return memo + apu.char_count;
+            }, 0);
+            console.log(overall_chars);
+            if (overall_chars > 2500) {
+              memo.push({
+                size: "full",
+                type: "normal",
+                contents: [ apu ]
+					    });
+            } else {
+						  last_page.contents.push(apu);
+            };
 					};
 				};
 			};
@@ -298,6 +310,7 @@ var Book = React.createClass({
 			getChapter: this.getChapter
 		};
 		var pages = _.map(this.state.paginated, function(page) {
+      console.log(this.state.paginated);
 			switch (page.type) {
 				case "normal":
 					return (<Page page={page} home={home}/>)
@@ -708,7 +721,7 @@ var APUChapter = React.createClass({
 		return (
 			<div className="apu_content">
 				<h4>{this.props.apu.title}</h4>
-				<p><span className={dropcap_class}>{dropcap}</span><span className="leadin">{leadin}</span>{' ' + rest} ({this.props.apu.position + ":" + this.props.apu.id})</p>
+				<p><span className={dropcap_class}>{dropcap}</span><span className="leadin">{leadin}</span>{' ' + rest}</p>
 			</div>
 		)
 	}
@@ -718,7 +731,7 @@ var APUParagraph = React.createClass({
 	render: function() {
 		return (
 			<div className="apu_content">
-				<p>{this.props.apu.content} ({this.props.apu.position  + ":" + this.props.apu.id})</p>
+				<p>{this.props.apu.content}</p>
 			</div>
 		)
 	}
@@ -852,6 +865,6 @@ var Footer = React.createClass({
 });
 
 React.renderComponent(
-  <Book url="http://localhost:8080/api/start/book/J4S4W" />,
+  <Book url="http://localhost:8080/api/start/book/tf4Ir" />,
   document.getElementById('content')
 );
